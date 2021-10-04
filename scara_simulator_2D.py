@@ -2,6 +2,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 
 class Robot_SCARA():
 
@@ -142,7 +143,7 @@ class Robot_SCARA():
         assert( self.x is not None or self.y is not None ), "You first need to generate the dataset using the method `generateDataset(...)`."
 
         # creamos un string con las longitudes de los eslabones del robot SCARA
-        link_sizes_str = "_".join([str(link_lenght) for link_lenght in env_robot.length_vec])
+        link_sizes_str = "_".join([str(link_lenght) for link_lenght in self.length_vec])
         dataset_filename="scara_robot_"+link_sizes_str+".csv"
         self.df_full.to_csv(dataset_filename, header=True)
         print("Dataset saved in file:", dataset_filename)
